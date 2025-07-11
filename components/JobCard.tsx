@@ -1,5 +1,4 @@
-import { View, Text } from 'react-native';
-import { cn } from 'nativewind';
+import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
 import type { FC } from 'react';
 
@@ -11,17 +10,45 @@ export type Job = {
 };
 
 const statusColors = {
-  upcoming: 'text-yellow-600',
-  committed: 'text-blue-600',
-  completed: 'text-green-600',
+  upcoming: '#d97706',
+  committed: '#2563eb',
+  completed: '#059669',
 };
 
 const JobCard: FC<{ job: Job }> = ({ job }) => (
-  <View className="bg-white rounded-xl p-4 mb-2 shadow-md">
-    <Text className="text-lg font-bold mb-1">{job.location}</Text>
-    <Text className="text-sm text-gray-500 mb-1">{job.time}</Text>
-    <Text className={cn('text-xs font-semibold', statusColors[job.status])}>{job.status.toUpperCase()}</Text>
+  <View style={styles.card}>
+    <Text style={styles.location}>{job.location}</Text>
+    <Text style={styles.time}>{job.time}</Text>
+    <Text style={[styles.status, { color: statusColors[job.status] }]}>{job.status.toUpperCase()}</Text>
   </View>
 );
+
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  location: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 4,
+  },
+  time: {
+    fontSize: 14,
+    color: '#6b7280',
+    marginBottom: 4,
+  },
+  status: {
+    fontSize: 12,
+    fontWeight: '600',
+  },
+});
 
 export default JobCard; 

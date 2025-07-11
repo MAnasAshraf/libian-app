@@ -1,5 +1,4 @@
-import { View, FlatList, ViewStyle } from 'react-native';
-import { cn } from 'nativewind';
+import { View, FlatList, ViewStyle, StyleSheet } from 'react-native';
 import React from 'react';
 import JobCard, { Job } from './JobCard';
 
@@ -10,7 +9,7 @@ interface BottomSheetListProps {
 }
 
 const BottomSheetList: React.FC<BottomSheetListProps> = ({ jobs, header, style }) => (
-  <View style={style} className="flex-1 bg-gray-50 px-4 pt-2">
+  <View style={[styles.container, style]}>
     {header}
     <FlatList
       data={jobs}
@@ -20,5 +19,14 @@ const BottomSheetList: React.FC<BottomSheetListProps> = ({ jobs, header, style }
     />
   </View>
 );
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f9fafb',
+    paddingHorizontal: 16,
+    paddingTop: 8,
+  },
+});
 
 export default BottomSheetList; 

@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, Text, Switch } from 'react-native';
-import { cn } from 'nativewind';
+import { View, Text, Switch, StyleSheet } from 'react-native';
 
 interface OnlineToggleProps {
   value: boolean;
@@ -8,8 +7,8 @@ interface OnlineToggleProps {
 }
 
 const OnlineToggle: React.FC<OnlineToggleProps> = ({ value, onToggle }) => (
-  <View className="flex-row items-center justify-between px-4 py-2 bg-white rounded-xl shadow mb-2">
-    <Text className="text-base font-semibold">{value ? 'Online' : 'Offline'}</Text>
+  <View style={styles.container}>
+    <Text style={styles.text}>{value ? 'Online' : 'Offline'}</Text>
     <Switch
       value={value}
       onValueChange={onToggle}
@@ -18,5 +17,27 @@ const OnlineToggle: React.FC<OnlineToggleProps> = ({ value, onToggle }) => (
     />
   </View>
 );
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    marginBottom: 8,
+  },
+  text: {
+    fontSize: 16,
+    fontWeight: '600',
+  },
+});
 
 export default OnlineToggle; 
