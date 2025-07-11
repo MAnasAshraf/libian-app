@@ -26,7 +26,8 @@ const INITIAL_REGION = {
 
 export default function App() {
   const sheetRef = useRef<BottomSheet>(null);
-  const snapPoints = useMemo(() => [height * 0.35, height * 0.8], []);
+  // Use more visible snap points
+  const snapPoints = useMemo(() => ["40%", "90%"], []);
   const [online, setOnline] = useState(false);
 
   return (
@@ -40,7 +41,8 @@ export default function App() {
             index={0}
             snapPoints={snapPoints}
             enablePanDownToClose={false}
-            backgroundStyle={{ borderTopLeftRadius: 24, borderTopRightRadius: 24 }}
+            backgroundStyle={styles.bottomSheetBg}
+            style={styles.bottomSheetDebug}
           >
             <BottomSheetList
               jobs={DUMMY_JOBS}
@@ -56,4 +58,13 @@ export default function App() {
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: '#fff' },
   flex1: { flex: 1 },
+  bottomSheetBg: {
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+  },
+  bottomSheetDebug: {
+    borderWidth: 2,
+    borderColor: 'red',
+  },
 });
