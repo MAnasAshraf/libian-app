@@ -6,6 +6,7 @@ import MapComponent from './components/MapComponent';
 import BottomSheetList from './components/BottomSheetList';
 import OnlineToggle from './components/OnlineToggle';
 import type { Job } from './components/JobCard';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const { height } = Dimensions.get('window');
 
@@ -29,24 +30,26 @@ export default function App() {
   const [online, setOnline] = useState(false);
 
   return (
-    <View style={styles.root}>
-      <StatusBar style="dark" />
-      <View style={styles.flex1}>
-        <MapComponent region={INITIAL_REGION} style={{ flex: 1 }} />
-        <BottomSheet
-          ref={sheetRef}
-          index={0}
-          snapPoints={snapPoints}
-          enablePanDownToClose={false}
-          backgroundStyle={{ borderTopLeftRadius: 24, borderTopRightRadius: 24 }}
-        >
-          <BottomSheetList
-            jobs={DUMMY_JOBS}
-            header={<OnlineToggle value={online} onToggle={setOnline} />}
-          />
-        </BottomSheet>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <View style={styles.root}>
+        <StatusBar style="dark" />
+        <View style={styles.flex1}>
+          <MapComponent region={INITIAL_REGION} style={{ flex: 1 }} />
+          <BottomSheet
+            ref={sheetRef}
+            index={0}
+            snapPoints={snapPoints}
+            enablePanDownToClose={false}
+            backgroundStyle={{ borderTopLeftRadius: 24, borderTopRightRadius: 24 }}
+          >
+            <BottomSheetList
+              jobs={DUMMY_JOBS}
+              header={<OnlineToggle value={online} onToggle={setOnline} />}
+            />
+          </BottomSheet>
+        </View>
       </View>
-    </View>
+    </GestureHandlerRootView>
   );
 }
 
