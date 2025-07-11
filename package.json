@@ -15,9 +15,9 @@
     "nativewind": "^4.1.23",
     "react": "19.0.0",
     "react-native": "0.79.5",
-    "react-native-gesture-handler": "^2.27.1",
-    "react-native-maps": "^1.24.3",
-    "react-native-reanimated": "^3.18.0",
+    "react-native-gesture-handler": "~2.24.0",
+    "react-native-maps": "^1.20.1",
+    "react-native-reanimated": "~3.17.4",
     "tailwindcss": "^3.4.17",
     "zustand": "^5.0.6"
   },
